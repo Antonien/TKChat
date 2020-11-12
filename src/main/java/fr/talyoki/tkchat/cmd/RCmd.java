@@ -41,6 +41,7 @@ public class RCmd extends Command
 					}
 					message = message.substring(0, message.length() - 1);
 
+					// Envoi du message aux joueurs
 					TextComponent msgFull = new TextComponent(message);
 					messageManager.SendMessagePlayer(ProxyServer.getInstance().getPlayer(lastDest), (ProxiedPlayer) sender, msgFull, true);
 				}

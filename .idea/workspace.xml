@@ -15,6 +15,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1k3Dcw80ynIaM5uANGug1kspws6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,7 +26,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -51,10 +55,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="200" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605145018562" />
-    <state x="739" y="269" key="FileChooserDialogImpl" timestamp="1605123596934">
+    <state x="739" y="269" key="FileChooserDialogImpl" timestamp="1605188870501">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="739" y="269" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605123596934" />
+    <state x="739" y="269" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605188870501" />
     <state x="739" y="269" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1605042954797" />
     <state width="1877" height="123" key="GridCell.Tab.0.bottom" timestamp="1605149801254">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -72,9 +76,9 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="123" key="GridCell.Tab.0.right/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605149801253" />
-    <state x="463" y="170" key="SettingsEditor" timestamp="1605123764951">
+    <state x="463" y="170" key="SettingsEditor" timestamp="1605188884324">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="463" y="170" key="SettingsEditor/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605123764951" />
+    <state x="463" y="170" key="SettingsEditor/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605188884324" />
   </component>
 </project>
