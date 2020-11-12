@@ -26,7 +26,7 @@ public class TKchat extends Plugin
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new EventChatEvent(manager));
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new EventLoginEvent(manager));
 
-		EventGroupChange eventGroupChange = new EventGroupChange(manager.moderatorsGlobalViewManager);
+		EventGroupChange eventGroupChange = new EventGroupChange(manager);
 		manager.luckPerms.getAPI().getEventBus().subscribe(UserDataRecalculateEvent.class, eventGroupChange::onUserTrack);
 
 		// Commandes
