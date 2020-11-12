@@ -2,6 +2,7 @@ package fr.talyoki.tkchat.listeners;
 
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.ModeratorsGlobalViewManager;
+import fr.talyoki.tkchat.manager.ModeratorsPrivateViewManager;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PlayerDisconnectEvent;
@@ -13,12 +14,14 @@ import java.util.logging.Level;
 
 public class EventLoginEvent implements Listener
 {
-	private ModeratorsGlobalViewManager moderatorsGlobalViewManager;
+	private ModeratorsGlobalViewManager moderatorsGlobalView;
+	private ModeratorsPrivateViewManager moderatorsPrivateView;
 
 	// Récupération des variables
 	public EventLoginEvent(Manager manager)
 	{
-		this.moderatorsGlobalViewManager = manager.moderatorsGlobalViewManager;
+		moderatorsGlobalView = manager.moderatorsGlobalViewManager;
+		moderatorsPrivateView = manager.moderatorsPrivateViewManager;
 	}
 
 	// Lorsqu'un joueur se connecte ...
@@ -32,7 +35,7 @@ public class EventLoginEvent implements Listener
 		if(player.hasPermission("tkChat.chat.modo"))
 		{
 			// Si il a la permission on l'ajoute par default
-			if(moderatorsGlobalViewManager.addModo(e.getPlayer().getName()))
+			if(moderatorsGlobalView.addModo(e.getPlayer().getName()))
 			{
 				ProxyServer.getInstance().getLogger().log(Level.INFO,
 						"[TKchat] Le joueur " + player.getDisplayName() + " a été ajouté a la liste de modération du chat");
@@ -42,7 +45,6 @@ public class EventLoginEvent implements Listener
 				ProxyServer.getInstance().getLogger().log(Level.INFO,
 						"[TKchat] Le joueur " + player.getDisplayName() + " n'a pas pu être ajouté a la liste de modération du chat");
 			}
-
 		}
 	}
 
@@ -50,10 +52,11 @@ public class EventLoginEvent implements Listener
 	@EventHandler
 	public void onDeconnectEvent(PlayerDisconnectEvent e)
 	{
-        // Récupération du joueur
-        ProxiedPlayer player = e.getPlayer();
+		// Récupération du joueur
+		ProxiedPlayer player = e.getPlayer();
 
-        // On le supprimer de la liste modo
-        moderatorsGlobalViewManager.removeModo(player.getName());
+		// On le supprimer de la liste modo
+		moderatorsGlobalView.removeModo(player.getName());
+		moderatorsPrivateView.removeModo(player.getName());
 	}
 }

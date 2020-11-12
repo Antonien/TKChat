@@ -20,13 +20,15 @@ public class MessageManager
 {
 	private LuckPermInfo luckPerms;
 	private StreamerManager streamerManager;
-	private ModeratorsGlobalViewManager moderatorsGlobalViewManager;
+	private ModeratorsGlobalViewManager moderatorsGlobalView;
+	private ModeratorsPrivateViewManager moderatorsPrivateView;
 
 	public MessageManager(Manager manager)
 	{
 		this.luckPerms = manager.luckPerms;
 		this.streamerManager = manager.streamerManager;
-		this.moderatorsGlobalViewManager = manager.moderatorsGlobalViewManager;
+		this.moderatorsGlobalView = manager.moderatorsGlobalViewManager;
+		this.moderatorsPrivateView = manager.moderatorsPrivateViewManager;
 	}
 
 	// Modèle de message standard
@@ -87,7 +89,7 @@ public class MessageManager
 				for(ProxiedPlayer allPlayer : allPlayers)
 				{
 					// Si le modo n'est pas déjà dans le serveur
-					if(moderatorsGlobalViewManager.isActive(allPlayer)
+					if(moderatorsGlobalView.isActive(allPlayer)
 							&& !allPlayer.getServer().getInfo().getName().equals(player.getServer().getInfo().getName()))
 					{
 						allPlayer.sendMessage(textServer);
@@ -122,12 +124,26 @@ public class MessageManager
 			privateMsgDest.addExtra(msgFull);
 
 			TextComponent privateMsgExpe = new TextComponent(
-					ChatColor.GOLD + "Toi" + ChatColor.DARK_GRAY + " -> " + ChatColor.GOLD + playerExpe.getDisplayName() + ChatColor.DARK_GRAY + " : "
+					ChatColor.GOLD + "Toi" + ChatColor.DARK_GRAY + " -> " + ChatColor.GOLD + playerDest.getDisplayName() + ChatColor.DARK_GRAY + " : "
 							+ ChatColor.WHITE);
 			privateMsgExpe.addExtra(msgFull);
 
 			playerDest.sendMessage(privateMsgDest);
 			playerExpe.sendMessage(privateMsgExpe);
+
+			// Envoie du message à la modération
+			Collection<ProxiedPlayer> allPlayers = ProxyServer.getInstance().getPlayers();
+			for(ProxiedPlayer player : allPlayers)
+			{
+				// Si le modo n'est pas déjà dans le serveur
+				if(moderatorsPrivateView.isActive(player) && !player.getName().equals(playerDest.getName()) && !player.getName().equals(playerExpe.getName()))
+				{
+					TextComponent msgPrivate = new TextComponent(
+							ChatColor.GRAY + playerExpe.getName() + " -> " + playerDest.getName() + " : ");
+					msgPrivate.addExtra(msgFull);
+					player.sendMessage(msgPrivate);
+				}
+			}
 		}
 		else
 		{

@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class ModeratorsGlobalViewManager
 {
-	private Set<String> moderatorGlobalView = new HashSet<String>();
+	private Set<String> moderatorsGlobalView = new HashSet<String>();
 
 	// Permet d'actualiser le statu d'un modo
 	public void verifModo(String playerName)
@@ -32,27 +32,27 @@ public class ModeratorsGlobalViewManager
 	// Permet d'ajouter un joueur a la liste
 	public boolean addModo(String player)
 	{
-		return moderatorGlobalView.add(player);
+		return moderatorsGlobalView.add(player);
 	}
 
 	// Permet de retirer un joueur de la liste
 	public boolean removeModo(String player)
 	{
-		return moderatorGlobalView.remove(player);
+		return moderatorsGlobalView.remove(player);
 	}
 
 	// Permet de savoir si un modérateur veux voir les messages de tous les serveurs
 	public boolean isActive(ProxiedPlayer player)
 	{
 		String playerName = player.getName();
-		return moderatorGlobalView.contains(playerName);
+		return moderatorsGlobalView.contains(playerName);
 	}
 
 	// Permet d'afficher la liste actuelle des modo (debug)
 	public void listPlayer(CommandSender cs)
 	{
-		((ProxiedPlayer) cs).sendMessage(new TextComponent("Liste des modérateurs :"));
-		for(String i : moderatorGlobalView)
+		((ProxiedPlayer) cs).sendMessage(new TextComponent("Liste des modérateurs (server) :"));
+		for(String i : moderatorsGlobalView)
 		{
 			((ProxiedPlayer) cs).sendMessage(new TextComponent(i));
 		}

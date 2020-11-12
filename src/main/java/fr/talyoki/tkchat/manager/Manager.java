@@ -1,6 +1,5 @@
 package fr.talyoki.tkchat.manager;
 
-import fr.talyoki.tkchat.listeners.EventGroupChange;
 import fr.talyoki.tkchat.luckperm.LuckPermInfo;
 
 public class Manager
@@ -12,5 +11,6 @@ public class Manager
 	public StreamerManager streamerManager = new StreamerManager();
 	public LastPrivateMessageHistoryManager lastPrivateMsgHist = new LastPrivateMessageHistoryManager();
 	public ModeratorsGlobalViewManager moderatorsGlobalViewManager = new ModeratorsGlobalViewManager();
+	public ModeratorsPrivateViewManager moderatorsPrivateViewManager = new ModeratorsPrivateViewManager();
 	public MessageManager messageManager = new MessageManager(this);
 }
