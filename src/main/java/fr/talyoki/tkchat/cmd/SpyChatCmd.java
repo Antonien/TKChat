@@ -1,5 +1,6 @@
 package fr.talyoki.tkchat.cmd;
 
+import fr.talyoki.tkchat.data.ErrorMsg;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.ModeratorsGlobalViewManager;
 import fr.talyoki.tkchat.manager.ModeratorsPrivateViewManager;
@@ -33,82 +34,111 @@ public class SpyChatCmd extends Command
                 switch(args[0])
                 {
                     case "list":
-                    	if(args.length >= 2)
+						if(this.hasModerateListPermissions(sender))
 						{
-							if(args[1].equals("global"))
+							if(args.length >= 2)
 							{
-								moderatorsGlobalView.listPlayer(sender);
+								if(args[1].equals("global"))
+								{
+									moderatorsGlobalView.listPlayer(sender);
+								}
+								else if(args[1].equals("private"))
+								{
+									moderatorsPrivateView.listPlayer(sender);
+								}
+								else
+								{
+									sender.sendMessage(new TextComponent(String.valueOf(ErrorMsg.ERROR_CMD)));
+								}
 							}
-							else if(args[1].equals("private"))
-							{
-								moderatorsPrivateView.listPlayer(sender);
-							}
-							else
-							{
-								sender.sendMessage(new TextComponent(ChatColor.RED + "Erreur dans la commande"));
-							}
+						}
+                    	else
+						{
+							sender.sendMessage(new TextComponent(String.valueOf(ErrorMsg.ERROR_PERM)));
 						}
                         break;
                     case "global":
-						// Commandes pour la modération du chat
-                        if(moderatorsGlobalView.isActive((ProxiedPlayer) sender))
-                        {
-                            // Si le joueur est deja enregistré
-                            if(moderatorsGlobalView.removeModo(sender.getName()))
-                            {
-                                // Message de confirmation
-                                sender.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez désactivé l'affichage des messages cross serveur"));
-                            }
-                        }
-                        else
-                        {
-                            // Si le joueur n'est pas enregistré
-                            if(moderatorsGlobalView.addModo(sender.getName()))
-                            {
-                                // Message de confirmation
-                                sender.sendMessage(new TextComponent(ChatColor.GREEN + "Vous pouvez maintenant voir les messages cross serveur"));
-                            }
-                        }
+                    	if(this.hasModerateChatPermissions(sender))
+						{
+							// Commandes pour la modération du chat
+							if(moderatorsGlobalView.isActive((ProxiedPlayer) sender))
+							{
+								// Si le joueur est deja enregistré
+								if(moderatorsGlobalView.removeModo(sender.getName()))
+								{
+									// Message de confirmation
+									sender.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez désactivé l'affichage des messages cross serveur"));
+								}
+							}
+							else
+							{
+								// Si le joueur n'est pas enregistré
+								if(moderatorsGlobalView.addModo(sender.getName()))
+								{
+									// Message de confirmation
+									sender.sendMessage(new TextComponent(ChatColor.GREEN + "Vous pouvez maintenant voir les messages cross serveur"));
+								}
+							}
+						}
+						else
+						{
+							sender.sendMessage(new TextComponent(String.valueOf(ErrorMsg.ERROR_PERM)));
+						}
                         break;
                     case "private":
-                        if(moderatorsPrivateView.isActive((ProxiedPlayer) sender))
-                        {
-                            // Si le joueur est deja enregistré
-                            if(moderatorsPrivateView.removeModo(sender.getName()))
-                            {
-                                // Message de confirmation
-                                sender.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez désactivé l'affichage des messages privés"));
-                            }
-                        }
+                    	if(this.hasModeratePrivateChatPermissions(sender))
+						{
+							if(moderatorsPrivateView.isActive((ProxiedPlayer) sender))
+							{
+								// Si le joueur est deja enregistré
+								if(moderatorsPrivateView.removeModo(sender.getName()))
+								{
+									// Message de confirmation
+									sender.sendMessage(new TextComponent(ChatColor.GREEN + "Vous avez désactivé l'affichage des messages privés"));
+								}
+							}
+							else
+							{
+								// Si le joueur n'est pas enregistré
+								if(moderatorsPrivateView.addModo(sender.getName()))
+								{
+									// Message de confirmation
+									sender.sendMessage(new TextComponent(ChatColor.GREEN + "Vous pouvez maintenant voir les messages privés"));
+								}
+							}
+						}
                         else
-                        {
-                            // Si le joueur n'est pas enregistré
-                            if(moderatorsPrivateView.addModo(sender.getName()))
-                            {
-                                // Message de confirmation
-                                sender.sendMessage(new TextComponent(ChatColor.GREEN + "Vous pouvez maintenant voir les messages privés"));
-                            }
-                        }
+						{
+							sender.sendMessage(new TextComponent(String.valueOf(ErrorMsg.ERROR_PERM)));
+						}
                         break;
                     default:
-                        sender.sendMessage(new TextComponent(ChatColor.RED + "Erreur dans la commande"));
+						sender.sendMessage(new TextComponent(String.valueOf(ErrorMsg.ERROR_CMD)));
                         break;
                 }
 			}
 			else
 			{
-				sender.sendMessage(new TextComponent(ChatColor.RED + "Erreur dans la commande"));
+				sender.sendMessage(new TextComponent(String.valueOf(ErrorMsg.ERROR_CMD)));
 			}
 		}
 		else
 		{
-			sender.sendMessage(new TextComponent(ChatColor.RED + "Erreur dans la commande"));
+			sender.sendMessage(new TextComponent(String.valueOf(ErrorMsg.ERROR_CMD)));
 		}
 	}
 
 	// Permissions chat modo
 	private boolean hasModerateChatPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.chat.modo");
+		return sender.hasPermission("tkChat.spychat.global");
+	}
+	private boolean hasModeratePrivateChatPermissions(CommandSender sender)
+	{
+		return sender.hasPermission("tkChat.spychat.private");
+	}
+	private boolean hasModerateListPermissions(CommandSender sender)
+	{
+		return sender.hasPermission("tkChat.spychat.list");
 	}
 }

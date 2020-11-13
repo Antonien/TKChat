@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcd0e5b0-c5e9-4333-8e76-2472244506fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/ConfigManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/utils/ConfigUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/TKchat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/TKchat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/ChatCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/SpyChatCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/SpyChatCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/SpyChatCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/ConfigManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/MessageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/MessageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,22 +67,22 @@
     </state>
     <state x="739" y="269" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605188870501" />
     <state x="739" y="269" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1605042954797" />
-    <state width="1877" height="123" key="GridCell.Tab.0.bottom" timestamp="1605225761764">
+    <state width="1877" height="123" key="GridCell.Tab.0.bottom" timestamp="1605235291308">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="123" key="GridCell.Tab.0.bottom/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605225761764" />
-    <state width="1877" height="123" key="GridCell.Tab.0.center" timestamp="1605225761764">
+    <state width="1877" height="123" key="GridCell.Tab.0.bottom/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605235291308" />
+    <state width="1877" height="123" key="GridCell.Tab.0.center" timestamp="1605235291308">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="123" key="GridCell.Tab.0.center/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605225761764" />
-    <state width="1877" height="123" key="GridCell.Tab.0.left" timestamp="1605225761764">
+    <state width="1877" height="123" key="GridCell.Tab.0.center/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605235291308" />
+    <state width="1877" height="123" key="GridCell.Tab.0.left" timestamp="1605235291307">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="123" key="GridCell.Tab.0.left/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605225761764" />
-    <state width="1877" height="123" key="GridCell.Tab.0.right" timestamp="1605225761764">
+    <state width="1877" height="123" key="GridCell.Tab.0.left/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605235291307" />
+    <state width="1877" height="123" key="GridCell.Tab.0.right" timestamp="1605235291308">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="123" key="GridCell.Tab.0.right/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605225761764" />
+    <state width="1877" height="123" key="GridCell.Tab.0.right/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605235291308" />
     <state x="463" y="170" key="SettingsEditor" timestamp="1605188884324">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
