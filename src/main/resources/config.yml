@@ -1,0 +1,17 @@
+alias:
+  global:
+    default: ""
+    build: "&a■&r "
+    lumirecia: "&6■&r "
+    ressource: "&9■&r "
+    uhc: "&c■&r "
+    world: "&a■&r "
+    zenga: "&6■&r "
+  server:
+    default: ""
+    build: "&a> ■&r "
+    lumirecia: "&6> ■&r "
+    ressource: "&9> ■&r "
+    uhc: "&c> ■&r "
+    world: "&a> ■&r "
+    zenga: "&6> ■&r "

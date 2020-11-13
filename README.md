@@ -9,9 +9,8 @@ A Bungee chat plugin.
 ###### Commands
 - /msg [pseudo] [message] - (tkChat.msg.private)
 - /r [message] - (tkChat.msg.r)
-- /chat modo global - (tkChat.chat.modo)
-- /chat modo private - (tkChat.chat.modo)
-- /chat list global - (tkChat.chat.modo)
-- /chat list private - (tkChat.chat.modo)
+- /spychat global/private - (tkChat.chat.modo)
+- /spychat list global - (tkChat.chat.modo)
+- /spychat list private - (tkChat.chat.modo)
 - /live up [pseudoMC] [pseudoTwitch] - (tkChat.live)
 - /live down [pseudoMC] - (tkChat.live)

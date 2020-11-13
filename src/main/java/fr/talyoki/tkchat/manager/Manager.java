@@ -1,16 +1,33 @@
 package fr.talyoki.tkchat.manager;
 
+import fr.talyoki.tkchat.TKchat;
 import fr.talyoki.tkchat.luckperm.LuckPermInfo;
+import net.md_5.bungee.api.plugin.Plugin;
 
 public class Manager
 {
-	// Initialisation de l'API LuckPerms
-	public LuckPermInfo luckPerms = new LuckPermInfo();
+	public LuckPermInfo luckPerms = null;
+	public StreamerManager streamerManager = null;
+	public LastPrivateMessageHistoryManager lastPrivateMsgHist = null;
+	public ModeratorsGlobalViewManager moderatorsGlobalViewManager = null;
+	public ModeratorsPrivateViewManager moderatorsPrivateViewManager = null;
+	public MessageManager messageManager = null;
+	public ConfigManager configManager = null;
 
-	// Initialisation des variables
-	public StreamerManager streamerManager = new StreamerManager();
-	public LastPrivateMessageHistoryManager lastPrivateMsgHist = new LastPrivateMessageHistoryManager();
-	public ModeratorsGlobalViewManager moderatorsGlobalViewManager = new ModeratorsGlobalViewManager();
-	public ModeratorsPrivateViewManager moderatorsPrivateViewManager = new ModeratorsPrivateViewManager();
-	public MessageManager messageManager = new MessageManager(this);
+	// Initialisation des configs
+	public Manager(Plugin plugin)
+	{
+		// Initialisation des configs
+		configManager = new ConfigManager(plugin);
+
+		// Initialisation de l'API LuckPerms
+		luckPerms = new LuckPermInfo();
+
+		// Initialisation des variables
+		streamerManager = new StreamerManager();
+		lastPrivateMsgHist = new LastPrivateMessageHistoryManager();
+		moderatorsGlobalViewManager = new ModeratorsGlobalViewManager();
+		moderatorsPrivateViewManager = new ModeratorsPrivateViewManager();
+		messageManager = new MessageManager(this);
+	}
 }

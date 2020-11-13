@@ -22,6 +22,7 @@ public class MessageManager
 	private StreamerManager streamerManager;
 	private ModeratorsGlobalViewManager moderatorsGlobalView;
 	private ModeratorsPrivateViewManager moderatorsPrivateView;
+	private ConfigManager configManager;
 
 	public MessageManager(Manager manager)
 	{
@@ -29,6 +30,7 @@ public class MessageManager
 		this.streamerManager = manager.streamerManager;
 		this.moderatorsGlobalView = manager.moderatorsGlobalViewManager;
 		this.moderatorsPrivateView = manager.moderatorsPrivateViewManager;
+		this.configManager = manager.configManager;
 	}
 
 	// Modèle de message standard
@@ -41,16 +43,8 @@ public class MessageManager
 		String server = player.getServer().getInfo().getName();
 
 		// Création de l'icon pour situer le joueur entre les serveurs
-		String icon = "■ ";
-		ChatColor colorServer;
-		if(server.equals("build"))
-		{
-			colorServer = ChatColor.GREEN;
-		}
-		else
-		{
-			colorServer = ChatColor.GRAY;
-		}
+		String aliasGlobal = configManager.listAliasGlobalPrefix.getOrDefault(server, configManager.listAliasGlobalPrefix.get("default"));
+		String aliasServer = configManager.listAliasServerPrefix.getOrDefault(server, configManager.listAliasServerPrefix.get("default"));
 
 		// Récupération du prefix du joueur
 		String prefixGroup = this.luckPerms.getPrefixGroup(user);
@@ -67,12 +61,12 @@ public class MessageManager
 
 		// Création du message complet
 		TextComponent textGlobal = new TextComponent();
-		textGlobal.addExtra(colorServer + icon);
+		textGlobal.addExtra(aliasGlobal.replace('&', '§'));
 		textGlobal.addExtra(prefixLive);
 		textGlobal.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + player.getDisplayName() + ChatColor.WHITE + " : " + msg);
 
 		TextComponent textServer = new TextComponent();
-		textServer.addExtra(colorServer + "> " + icon);
+		textServer.addExtra(aliasServer.replace('&', '§'));
 		textServer.addExtra(prefixLive);
 		textServer.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + player.getDisplayName() + ChatColor.WHITE + " : " + msg);
 
