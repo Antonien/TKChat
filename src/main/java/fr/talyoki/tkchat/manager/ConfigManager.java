@@ -18,6 +18,7 @@ public class ConfigManager
 
 	public Map<String, String> listAliasGlobalPrefix = new HashMap<>();
 	public Map<String, String> listAliasServerPrefix = new HashMap<>();
+	public Map<String, String> listPrefix = new HashMap<>();
 
 	public ConfigManager(Plugin plugin)
 	{
@@ -39,6 +40,7 @@ public class ConfigManager
 
 		if(configuration != null)
 		{
+			// Récupération des alias de serveurs
 			if(!configuration.contains("alias"))
 			{
 				return false;
@@ -51,7 +53,6 @@ public class ConfigManager
 			{
 				return false;
 			}
-
 			Configuration listAliasGlobal = configuration.getSection("alias.global");
 			Configuration listAliasServer = configuration.getSection("alias.server");
 			if(!listAliasGlobal.contains("default"))
@@ -62,7 +63,6 @@ public class ConfigManager
 			{
 				return false;
 			}
-
 			for(String key : listAliasGlobal.getKeys())
 			{
 				listAliasGlobalPrefix.put(key, listAliasGlobal.getString(key,""));
@@ -70,6 +70,17 @@ public class ConfigManager
 			for(String key : listAliasServer.getKeys())
 			{
 				listAliasServerPrefix.put(key, listAliasServer.getString(key,""));
+			}
+
+			// Récupération des prefix
+			if(!configuration.contains("prefix"))
+			{
+				return false;
+			}
+			Configuration listPrefixConfig = configuration.getSection("prefix");
+			for(String key : listPrefixConfig.getKeys())
+			{
+				listPrefix.put(key, listPrefixConfig.getString(key, ""));
 			}
 		}
 

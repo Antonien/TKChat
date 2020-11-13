@@ -15,6 +15,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.connection.Server;
 
 import java.util.Collection;
+import java.util.logging.Level;
 
 public class MessageManager
 {
@@ -54,7 +55,7 @@ public class MessageManager
 		if(this.streamerManager.isInLive(player))
 		{
 			String psTwitch = this.streamerManager.getPseudoTwitch(player.getName());
-			prefixLive = new TextComponent(ChatColor.DARK_PURPLE + "[LIVE]");
+			prefixLive = new TextComponent(configManager.listPrefix.getOrDefault("live", "").replace('&', '§'));
 			prefixLive.setClickEvent(new ClickEvent(Action.OPEN_URL, "https://www.twitch.tv/" + psTwitch));
 			prefixLive.setHoverEvent(new HoverEvent(net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_TEXT, new Content[] { new Text("Regarder le stream") }));
 		}
@@ -104,6 +105,7 @@ public class MessageManager
 		server.getInfo().getPlayers().forEach((player) -> {
 			SendMessagePlayer(player, null, msgFull, false);
 		});
+		ProxyServer.getInstance().getLogger().log(Level.INFO, "[" + server.getInfo().getName() + "] <-> " + msgFull.toPlainText());
 	}
 
 	// Envoie d'un message privé
@@ -127,17 +129,19 @@ public class MessageManager
 
 			// Envoie du message à la modération
 			Collection<ProxiedPlayer> allPlayers = ProxyServer.getInstance().getPlayers();
+			TextComponent msgPrivate = new TextComponent(ChatColor.GRAY + playerExpe.getName() + " -> " + playerDest.getName() + " : ");
+			msgPrivate.addExtra(msgFull);
 			for(ProxiedPlayer player : allPlayers)
 			{
 				// Si le modo n'est pas déjà dans le serveur
-				if(moderatorsPrivateView.isActive(player) && !player.getName().equals(playerDest.getName()) && !player.getName().equals(playerExpe.getName()))
+				if(moderatorsPrivateView.isActive(player) && !player.getName().equals(playerDest.getName())
+						&& !player.getName().equals(playerExpe.getName()))
 				{
-					TextComponent msgPrivate = new TextComponent(
-							ChatColor.GRAY + playerExpe.getName() + " -> " + playerDest.getName() + " : ");
-					msgPrivate.addExtra(msgFull);
 					player.sendMessage(msgPrivate);
 				}
 			}
+			// Envoi dans les logs
+			ProxyServer.getInstance().getLogger().log(Level.INFO, "[private] <-> " + msgPrivate.toPlainText());
 		}
 		else
 		{
