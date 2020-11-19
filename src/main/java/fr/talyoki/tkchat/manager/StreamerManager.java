@@ -5,12 +5,12 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.Connection;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class StreamerManager
 {
-	private Map<String, String> StreamerList = new HashMap<>();
+	private Map<String, String> StreamerList = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);;
 
 	public StreamerManager()
 	{
