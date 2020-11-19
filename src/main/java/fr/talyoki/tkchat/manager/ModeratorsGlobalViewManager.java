@@ -18,7 +18,7 @@ public class ModeratorsGlobalViewManager
 		ProxiedPlayer player = ProxyServer.getInstance().getPlayer(playerName);
 		if(player != null)
 		{
-			if(player.hasPermission("tkChat.chat.modo"))
+			if(player.hasPermission("tkChat.spychat.global"))
 			{
 				addModo(player.getName());
 			}

@@ -1,6 +1,5 @@
 package fr.talyoki.tkchat.manager;
 
-import fr.talyoki.tkchat.TKchat;
 import fr.talyoki.tkchat.luckperm.LuckPermInfo;
 import net.md_5.bungee.api.plugin.Plugin;
 

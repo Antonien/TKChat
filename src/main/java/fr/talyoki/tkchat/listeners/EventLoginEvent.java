@@ -32,7 +32,7 @@ public class EventLoginEvent implements Listener
 		ProxiedPlayer player = e.getPlayer();
 
 		// On actualise la liste des modos pour ModeratorsView
-		if(player.hasPermission("tkChat.chat.modo"))
+		if(player.hasPermission("tkChat.spychat.global"))
 		{
 			// Si il a la permission on l'ajoute par default
 			if(moderatorsGlobalView.addModo(e.getPlayer().getName()))
