@@ -1,6 +1,7 @@
 package fr.talyoki.tkchat.cmd;
 
 import fr.talyoki.tkchat.data.ErrorMsg;
+import fr.talyoki.tkchat.data.Permissions;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.ModeratorsGlobalViewManager;
 import fr.talyoki.tkchat.manager.ModeratorsPrivateViewManager;
@@ -123,16 +124,16 @@ public class SpyChatCmd extends Command
 	// Permissions chat modo
 	private boolean hasModerateChatPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.spychat.global");
+		return sender.hasPermission(Permissions.CMD_SPYCHAT_GLOBAL.toString());
 	}
 
 	private boolean hasModeratePrivateChatPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.spychat.private");
+		return sender.hasPermission(Permissions.CMD_SPYCHAT_PRIVATE.toString());
 	}
 
 	private boolean hasModerateListPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.spychat.list");
+		return sender.hasPermission(Permissions.CMD_SPYCHAT_LIST.toString());
 	}
 }

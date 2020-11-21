@@ -1,5 +1,6 @@
 package fr.talyoki.tkchat.cmd;
 
+import fr.talyoki.tkchat.data.Permissions;
 import fr.talyoki.tkchat.manager.LastPrivateMessageHistoryManager;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.MessageManager;
@@ -72,6 +73,6 @@ public class MsgCmd extends Command
 	// Permissions message privé
 	private boolean hasSendPrivatePermissions(CommandSender sender)
 	{
-		return sender.hasPermission("*") || sender.hasPermission("tkChat.msg.private");
+		return sender.hasPermission("*") || sender.hasPermission(Permissions.CMD_MSG_PRIVATE.toString());
 	}
 }

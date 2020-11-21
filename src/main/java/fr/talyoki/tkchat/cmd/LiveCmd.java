@@ -1,13 +1,22 @@
 package fr.talyoki.tkchat.cmd;
 
+import fr.talyoki.tkchat.data.Permissions;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.StreamerManager;
+import fr.talyoki.tkchat.utils.StringUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
+import net.md_5.bungee.api.plugin.TabExecutor;
 
-public class LiveCmd extends Command
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class LiveCmd extends Command implements TabExecutor
 {
 	StreamerManager streamerManager = null;
 
@@ -74,6 +83,43 @@ public class LiveCmd extends Command
 	// Permission pour gérer les lives
 	private boolean hasLivePermissions(CommandSender sender)
 	{
-		return sender.hasPermission("*") || sender.hasPermission("tkChat.live");
+		return sender.hasPermission("*") || sender.hasPermission(Permissions.CMD_LIVE.toString());
+	}
+
+	// auto completion
+	@Override
+	public Iterable<String> onTabComplete(CommandSender commandSender, String[] args)
+	{
+		// Récupération de la liste des joueurs
+		Collection<ProxiedPlayer> playerList = ProxyServer.getInstance().getPlayers();
+
+		if(args.length == 1)
+		{
+			List<String> list = new ArrayList<>();
+
+			list.add("up");
+			list.add("down");
+
+			final List<String> completions = new ArrayList<>();
+			StringUtil.copyPartialMatches(args[0], list, completions);
+
+			return completions;
+		}
+
+		if(args.length == 2)
+		{
+			List<String> list = new ArrayList<>();
+			for(ProxiedPlayer player:playerList)
+			{
+				list.add(player.getName());
+			}
+
+			final List<String> completions = new ArrayList<>();
+			StringUtil.copyPartialMatches(args[0], list, completions);
+
+			return completions;
+		}
+
+		return new ArrayList<>();
 	}
 }

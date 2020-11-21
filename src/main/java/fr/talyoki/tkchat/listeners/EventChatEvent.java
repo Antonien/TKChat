@@ -1,6 +1,7 @@
 package fr.talyoki.tkchat.listeners;
 
 import fr.talyoki.tkchat.data.MsgScope;
+import fr.talyoki.tkchat.data.Permissions;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.MessageManager;
 import net.md_5.bungee.api.ChatColor;
@@ -76,12 +77,12 @@ public class EventChatEvent implements Listener
 	// Permission message global
 	private boolean hasSendGlobalPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.msg.global");
+		return sender.hasPermission(Permissions.FUNC_MSG_GLOBAL.toString());
 	}
 
 	// Permission message serveur
 	private boolean hasSendServerPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.msg.server");
+		return sender.hasPermission(Permissions.FUNC_MSG_SERVER.toString());
 	}
 }
