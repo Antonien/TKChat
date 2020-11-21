@@ -11,11 +11,13 @@ import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
+import net.md_5.bungee.api.plugin.TabExecutor;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class MsgCmd extends Command
+public class MsgCmd extends Command implements TabExecutor
 {
 	private LastPrivateMessageHistoryManager lastPrivateMsgHist;
 	private MessageManager messageManager;
@@ -74,5 +76,28 @@ public class MsgCmd extends Command
 	private boolean hasSendPrivatePermissions(CommandSender sender)
 	{
 		return sender.hasPermission("*") || sender.hasPermission(Permissions.CMD_MSG_PRIVATE.toString());
+	}
+
+	// auto completion
+	@Override
+	public Iterable<String> onTabComplete(CommandSender commandSender, String[] args)
+	{
+		// Récupération de la liste des joueurs
+		Collection<ProxiedPlayer> playerList = ProxyServer.getInstance().getPlayers();
+		if(args.length == 1)
+		{
+			List<String> list = new ArrayList<>();
+			for(ProxiedPlayer player:playerList)
+			{
+				list.add(player.getName());
+			}
+
+			final List<String> completions = new ArrayList<>();
+			StringUtil.copyPartialMatches(args[0], list, completions);
+
+			return completions;
+		}
+
+		return new ArrayList<>();
 	}
 }

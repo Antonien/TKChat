@@ -90,9 +90,7 @@ public class LiveCmd extends Command implements TabExecutor
 	@Override
 	public Iterable<String> onTabComplete(CommandSender commandSender, String[] args)
 	{
-		// Récupération de la liste des joueurs
-		Collection<ProxiedPlayer> playerList = ProxyServer.getInstance().getPlayers();
-
+		// up/down
 		if(args.length == 1)
 		{
 			List<String> list = new ArrayList<>();
@@ -106,6 +104,8 @@ public class LiveCmd extends Command implements TabExecutor
 			return completions;
 		}
 
+		// Récupération de la liste des joueurs
+		Collection<ProxiedPlayer> playerList = ProxyServer.getInstance().getPlayers();
 		if(args.length == 2)
 		{
 			List<String> list = new ArrayList<>();
@@ -115,7 +115,7 @@ public class LiveCmd extends Command implements TabExecutor
 			}
 
 			final List<String> completions = new ArrayList<>();
-			StringUtil.copyPartialMatches(args[0], list, completions);
+			StringUtil.copyPartialMatches(args[1], list, completions);
 
 			return completions;
 		}
