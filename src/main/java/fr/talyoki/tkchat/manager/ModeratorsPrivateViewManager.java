@@ -1,5 +1,6 @@
 package fr.talyoki.tkchat.manager;
 
+import fr.talyoki.tkchat.data.Permissions;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -18,7 +19,7 @@ public class ModeratorsPrivateViewManager
 		ProxiedPlayer player = ProxyServer.getInstance().getPlayer(playerName);
 		if(player != null)
 		{
-			if(player.hasPermission("tkChat.chat.modo"))
+			if(player.hasPermission(Permissions.FUNC_AUTO_ADD_MODO_LIST.toString()))
 			{
 				addModo(player.getName());
 			}

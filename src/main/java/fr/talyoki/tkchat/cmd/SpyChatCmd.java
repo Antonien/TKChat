@@ -1,16 +1,24 @@
 package fr.talyoki.tkchat.cmd;
 
 import fr.talyoki.tkchat.data.ErrorMsg;
+import fr.talyoki.tkchat.data.Permissions;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.ModeratorsGlobalViewManager;
 import fr.talyoki.tkchat.manager.ModeratorsPrivateViewManager;
+import fr.talyoki.tkchat.utils.StringUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
+import net.md_5.bungee.api.plugin.TabExecutor;
 
-public class SpyChatCmd extends Command
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class SpyChatCmd extends Command implements TabExecutor
 {
 	private ModeratorsGlobalViewManager moderatorsGlobalView;
 	private ModeratorsPrivateViewManager moderatorsPrivateView;
@@ -123,16 +131,65 @@ public class SpyChatCmd extends Command
 	// Permissions chat modo
 	private boolean hasModerateChatPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.spychat.global");
+		return sender.hasPermission(Permissions.CMD_SPYCHAT_GLOBAL.toString());
 	}
 
 	private boolean hasModeratePrivateChatPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.spychat.private");
+		return sender.hasPermission(Permissions.CMD_SPYCHAT_PRIVATE.toString());
 	}
 
 	private boolean hasModerateListPermissions(CommandSender sender)
 	{
-		return sender.hasPermission("tkChat.spychat.list");
+		return sender.hasPermission(Permissions.CMD_SPYCHAT_LIST.toString());
+	}
+
+	// auto completion
+	@Override
+	public Iterable<String> onTabComplete(CommandSender commandSender, String[] args)
+	{
+		// up/down
+		if(args.length == 1)
+		{
+			List<String> list = new ArrayList<>();
+
+			if(this.hasModerateChatPermissions(commandSender))
+			{
+				list.add("global");
+			}
+			if(this.hasModeratePrivateChatPermissions(commandSender))
+			{
+				list.add("private");
+			}
+			if(this.hasModerateListPermissions(commandSender))
+			{
+				list.add("list");
+			}
+
+			final List<String> completions = new ArrayList<>();
+			StringUtil.copyPartialMatches(args[0], list, completions);
+
+			return completions;
+		}
+
+		// Récupération de la liste des joueurs
+		Collection<ProxiedPlayer> playerList = ProxyServer.getInstance().getPlayers();
+		if(args.length == 2)
+		{
+			if(args[0].equals("list"))
+			{
+				List<String> list = new ArrayList<>();
+
+				list.add("global");
+				list.add("private");
+
+				final List<String> completions = new ArrayList<>();
+				StringUtil.copyPartialMatches(args[1], list, completions);
+
+				return completions;
+			}
+		}
+
+		return new ArrayList<>();
 	}
 }
