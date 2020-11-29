@@ -2,6 +2,9 @@ package fr.talyoki.tkchat.utils;
 
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collection;
 
 public class StringUtil
@@ -75,4 +78,22 @@ public class StringUtil
 		}
 		return string.regionMatches(true, 0, prefix, 0, prefix.length());
 	}
+
+	//Read file content into string with - Files.readAllBytes(Path path)
+	public static String readFileAsString(String filePath)
+	{
+		String content = "";
+
+		try
+		{
+			content = new String(Files.readAllBytes(Paths.get(filePath)));
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		return content;
+	}
+
 }

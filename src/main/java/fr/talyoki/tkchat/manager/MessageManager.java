@@ -49,6 +49,7 @@ public class MessageManager
 
 		// Récupération du prefix du joueur
 		String prefixGroup = this.luckPerms.getPrefixGroup(user);
+		String prefixUser = this.luckPerms.getPrefixUser(user);
 
 		// Création du prefix live clickable
 		TextComponent prefixLive = new TextComponent("");
@@ -60,24 +61,25 @@ public class MessageManager
 			prefixLive.setHoverEvent(new HoverEvent(net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_TEXT, new Content[] { new Text("Regarder le stream") }));
 		}
 
-		// Création du message complet
-		TextComponent textGlobal = new TextComponent();
-		textGlobal.addExtra(aliasGlobal.replace('&', '§'));
-		textGlobal.addExtra(prefixLive);
-		textGlobal.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + player.getDisplayName() + ChatColor.WHITE + " : " + msg);
-
-		TextComponent textServer = new TextComponent();
-		textServer.addExtra(aliasServer.replace('&', '§'));
-		textServer.addExtra(prefixLive);
-		textServer.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + player.getDisplayName() + ChatColor.WHITE + " : " + msg);
-
 		// Envoi du message
 		switch(scope)
 		{
 			case GLOBAL:
+				// Création du message complet
+				TextComponent textGlobal = new TextComponent();
+				textGlobal.addExtra(aliasGlobal.replace('&', '§'));
+				textGlobal.addExtra(prefixLive);
+				textGlobal.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + ChatColor.translateAlternateColorCodes('&', prefixUser) + player.getDisplayName() + ChatColor.WHITE + " : " + msg);
+
 				SendMessageGlobal(textGlobal);
 				break;
 			case SERVER:
+				// Création du message complet
+				TextComponent textServer = new TextComponent();
+				textServer.addExtra(aliasServer.replace('&', '§'));
+				textServer.addExtra(prefixLive);
+				textServer.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + ChatColor.translateAlternateColorCodes('&', prefixUser) + player.getDisplayName() + ChatColor.WHITE + " : " + msg);
+
 				SendMessageServer(textServer, player.getServer());
 				// Envoi d'une copie du message aux modo
 				Collection<ProxiedPlayer> allPlayers = ProxyServer.getInstance().getPlayers();

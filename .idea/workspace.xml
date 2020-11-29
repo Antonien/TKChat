@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcd0e5b0-c5e9-4333-8e76-2472244506fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/DisconnectEventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/SwitchServerEventListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/LiveCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/LiveCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/MsgCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/MsgCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/SpyChatCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/SpyChatCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/TKchat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/TKchat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/Permissions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/EventChatEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/ChatEventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/EventGroupChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/GroupeChangeEventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/EventLoginEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/LoginEventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/luckperm/LuckPermInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/luckperm/LuckPermInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/ConfigManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/MessageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/MessageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/utils/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/utils/StringUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +53,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TKtotebagBC" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -69,7 +79,8 @@
       <updated>1604920465285</updated>
       <workItem from="1605391749948" duration="3501000" />
       <workItem from="1605988557655" duration="18000" />
-      <workItem from="1605989200046" duration="6656000" />
+      <workItem from="1605989200046" duration="6684000" />
+      <workItem from="1606019391655" duration="1038000" />
     </task>
     <servers />
   </component>
@@ -85,34 +96,42 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="765" y="234" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605142683165" />
-    <state x="200" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605145018562">
+    <state x="200" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606604833950">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="200" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605145018562" />
+    <state x="200" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1606604833950" />
     <state x="739" y="269" key="FileChooserDialogImpl" timestamp="1605989260916">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="739" y="269" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605989260916" />
     <state x="739" y="269" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1605042954797" />
-    <state width="1877" height="179" key="GridCell.Tab.0.bottom" timestamp="1605995923006">
+    <state width="1877" height="127" key="GridCell.Tab.0.bottom" timestamp="1606615621230">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="179" key="GridCell.Tab.0.bottom/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605995923006" />
-    <state width="1877" height="179" key="GridCell.Tab.0.center" timestamp="1605995923006">
+    <state width="1877" height="127" key="GridCell.Tab.0.bottom/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1606615621230" />
+    <state width="1877" height="127" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606577204532" />
+    <state width="1877" height="127" key="GridCell.Tab.0.center" timestamp="1606615621230">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="179" key="GridCell.Tab.0.center/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605995923006" />
-    <state width="1877" height="179" key="GridCell.Tab.0.left" timestamp="1605995923006">
+    <state width="1877" height="127" key="GridCell.Tab.0.center/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1606615621230" />
+    <state width="1877" height="127" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606577204531" />
+    <state width="1877" height="127" key="GridCell.Tab.0.left" timestamp="1606615621229">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="179" key="GridCell.Tab.0.left/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605995923006" />
-    <state width="1877" height="179" key="GridCell.Tab.0.right" timestamp="1605995923006">
+    <state width="1877" height="127" key="GridCell.Tab.0.left/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1606615621229" />
+    <state width="1877" height="127" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606577204531" />
+    <state width="1877" height="127" key="GridCell.Tab.0.right" timestamp="1606615621230">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="179" key="GridCell.Tab.0.right/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605995923006" />
+    <state width="1877" height="127" key="GridCell.Tab.0.right/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1606615621230" />
+    <state width="1877" height="127" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606577204532" />
     <state x="463" y="170" key="SettingsEditor" timestamp="1605188884324">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="463" y="170" key="SettingsEditor/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1605188884324" />
+    <state x="616" y="243" key="run.anything.popup" timestamp="1606612317204">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="243" key="run.anything.popup/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1606612317204" />
   </component>
 </project>
