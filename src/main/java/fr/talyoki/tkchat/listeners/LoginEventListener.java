@@ -50,7 +50,7 @@ public class LoginEventListener implements Listener
 		{
 			// Message lorsqu'un joueur se connecte ET il est nouveau
 			newTempPlayers.add(player.getName());
-			String msg = configManager.listWelcomeMessage.get("server_new").replace("$player", player.getDisplayName());
+			String msg = configManager.listWelcomeMessage.get("server_new").replace("%player%", player.getDisplayName());
 			ProxyServer.getInstance().broadcast(new TextComponent(msg.replace('&', '§')));
 		}
 

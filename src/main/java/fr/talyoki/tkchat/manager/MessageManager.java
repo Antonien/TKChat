@@ -69,7 +69,8 @@ public class MessageManager
 				TextComponent textGlobal = new TextComponent();
 				textGlobal.addExtra(aliasGlobal.replace('&', '§'));
 				textGlobal.addExtra(prefixLive);
-				textGlobal.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + ChatColor.translateAlternateColorCodes('&', prefixUser) + player.getDisplayName() + ChatColor.WHITE + " : " + msg);
+				textGlobal.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + ChatColor.translateAlternateColorCodes('&', prefixUser)
+						+ player.getDisplayName() + ChatColor.WHITE + " : " + msg);
 
 				SendMessageGlobal(textGlobal);
 				break;
@@ -78,7 +79,8 @@ public class MessageManager
 				TextComponent textServer = new TextComponent();
 				textServer.addExtra(aliasServer.replace('&', '§'));
 				textServer.addExtra(prefixLive);
-				textServer.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + ChatColor.translateAlternateColorCodes('&', prefixUser) + player.getDisplayName() + ChatColor.WHITE + " : " + msg);
+				textServer.addExtra(ChatColor.translateAlternateColorCodes('&', prefixGroup) + ChatColor.translateAlternateColorCodes('&', prefixUser)
+						+ player.getDisplayName() + ChatColor.WHITE + " : " + msg);
 
 				SendMessageServer(textServer, player.getServer());
 				// Envoi d'une copie du message aux modo
