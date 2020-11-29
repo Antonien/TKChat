@@ -10,7 +10,8 @@ public enum Permissions
 	CMD_SPYCHAT_GLOBAL("spychat.global"),
 	CMD_SPYCHAT_PRIVATE("spychat.private"),
 	CMD_SPYCHAT_LIST("spychat.list"),
-	FUNC_AUTO_ADD_MODO_LIST("chat.modo");
+	FUNC_AUTO_ADD_MODO_LIST("chat.modo"),
+	FUNC_CHAT_COLOR("chat.color");
 
 	private String name = "";
 

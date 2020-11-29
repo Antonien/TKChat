@@ -49,6 +49,18 @@ public class LuckPermInfo
 		return prefix;
 	}
 
+	public String getPrefixUser(User user)
+	{
+		String prefix = "";
+		Collection<PrefixNode> listprefix = user.getNodes(NodeType.PREFIX);
+		if(listprefix.size() > 0)
+		{
+			prefix = ((PrefixNode) listprefix.toArray()[0]).getMetaValue();
+		}
+
+		return prefix;
+	}
+
 	// Permet de récupérer l'api
 	public LuckPerms getAPI()
 	{

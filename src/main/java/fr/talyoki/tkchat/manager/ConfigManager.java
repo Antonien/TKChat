@@ -19,6 +19,7 @@ public class ConfigManager
 	public Map<String, String> listAliasGlobalPrefix = new HashMap<>();
 	public Map<String, String> listAliasServerPrefix = new HashMap<>();
 	public Map<String, String> listPrefix = new HashMap<>();
+	public Map<String, String> listWelcomeMessage = new HashMap<>();
 
 	public ConfigManager(Plugin plugin)
 	{
@@ -81,6 +82,17 @@ public class ConfigManager
 			for(String key : listPrefixConfig.getKeys())
 			{
 				listPrefix.put(key, listPrefixConfig.getString(key, ""));
+			}
+
+			// Récupération des messages de bienvenue
+			if(!configuration.contains("welcome_msg"))
+			{
+				return false;
+			}
+			Configuration listWelcomeMsg = configuration.getSection("welcome_msg");
+			for(String key : listWelcomeMsg.getKeys())
+			{
+				listWelcomeMessage.put(key, listWelcomeMsg.getString(key, ""));
 			}
 		}
 

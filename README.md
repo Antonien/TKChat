@@ -6,14 +6,18 @@ A Bungee chat plugin.
 - You can send message to all the servers or only to the one where you are.
 - When a player is set in live, un link before is pseudo appears.
 - The moderators can see all private messages.
+- Management of prefixes and suffixes from LuckPerms.
+- Management of prefixes ans aliases of bungee servers.
+- Management of welcome, login, logout et switch servers.
 ###### Commands
-- /msg [pseudo] [message] - (tkChat.msg.private)
-- /r [message] - (tkChat.msg.r)
-- /spychat global - (tkChat.spychat.global)
-- /spychat private - (tkChat.spychat.private)
-- /spychat list global/private - (tkChat.spychat.list)
-- /live up [pseudoMC] [pseudoTwitch] - (tkChat.live)
-- /live down [pseudoMC] - (tkChat.live)
+- /msg [pseudo] [message] - (tkchat.msg.private)
+- /r [message] - (tkchat.msg.r)
+- /spychat global - (tkchat.spychat.global)
+- /spychat private - (tkchat.spychat.private)
+- /spychat list global/private - (tkchat.spychat.list)
+- /live up [pseudoMC] [pseudoTwitch] - (tkchat.live)
+- /live down [pseudoMC] - (tkchat.live)
 ###### Other nodes
-- tkChat.msg.global : Chat cross server
-- tkChat.msg.server : Chat only to the server where you are
+- tkchat.msg.global : Chat cross server
+- tkchat.msg.server : Chat only to the server where you are
+- tkchat.chat.color : Player can send message with chat color code

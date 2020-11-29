@@ -4,9 +4,7 @@ import fr.talyoki.tkchat.cmd.SpyChatCmd;
 import fr.talyoki.tkchat.cmd.LiveCmd;
 import fr.talyoki.tkchat.cmd.MsgCmd;
 import fr.talyoki.tkchat.cmd.RCmd;
-import fr.talyoki.tkchat.listeners.EventChatEvent;
-import fr.talyoki.tkchat.listeners.EventGroupChange;
-import fr.talyoki.tkchat.listeners.EventLoginEvent;
+import fr.talyoki.tkchat.listeners.*;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.utils.ConfigUtil;
 import net.luckperms.api.event.user.UserDataRecalculateEvent;
@@ -36,11 +34,13 @@ public class TKchat extends Plugin
 		}
 
 		// Events
-		ProxyServer.getInstance().getPluginManager().registerListener(this, new EventChatEvent(manager));
-		ProxyServer.getInstance().getPluginManager().registerListener(this, new EventLoginEvent(manager));
+		ProxyServer.getInstance().getPluginManager().registerListener(this, new ChatEventListener(manager));
+		ProxyServer.getInstance().getPluginManager().registerListener(this, new LoginEventListener(manager));
+		ProxyServer.getInstance().getPluginManager().registerListener(this, new DisconnectEventListener(manager));
+		ProxyServer.getInstance().getPluginManager().registerListener(this, new SwitchServerEventListener(manager));
 
-		EventGroupChange eventGroupChange = new EventGroupChange(manager);
-		manager.luckPerms.getAPI().getEventBus().subscribe(UserDataRecalculateEvent.class, eventGroupChange::onUserTrack);
+		GroupeChangeEventListener groupeChangeEventListener = new GroupeChangeEventListener(manager);
+		manager.luckPerms.getAPI().getEventBus().subscribe(UserDataRecalculateEvent.class, groupeChangeEventListener::onUserTrack);
 
 		// Commandes
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new LiveCmd(manager));
