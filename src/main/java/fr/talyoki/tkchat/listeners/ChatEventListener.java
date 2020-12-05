@@ -1,6 +1,6 @@
 package fr.talyoki.tkchat.listeners;
 
-import fr.talyoki.tkchat.data.MsgScope;
+import fr.talyoki.tkchat.data.message.MsgScope;
 import fr.talyoki.tkchat.data.Permissions;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.MessageManager;
@@ -57,7 +57,7 @@ public class ChatEventListener implements Listener
 					}
 
 					// Envoi du message en mode serveur
-					messageManager.SendMessage(player, msg, MsgScope.SERVER);
+					messageManager.sendMessage(player, msg, MsgScope.SERVER);
 				}
 				else
 				{
@@ -68,7 +68,7 @@ public class ChatEventListener implements Listener
 			else if(this.hasSendGlobalPermissions(player))
 			{
 				// Message en mode local
-				messageManager.SendMessage(player, msg, MsgScope.GLOBAL);
+				messageManager.sendMessage(player, msg, MsgScope.GLOBAL);
 			}
 			else
 			{

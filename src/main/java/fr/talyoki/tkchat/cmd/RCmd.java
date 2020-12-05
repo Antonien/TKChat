@@ -8,6 +8,7 @@ import fr.talyoki.tkchat.manager.MessageManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
@@ -43,8 +44,7 @@ public class RCmd extends Command
 					message = message.substring(0, message.length() - 1);
 
 					// Envoi du message aux joueurs
-					TextComponent msgFull = new TextComponent(message);
-					messageManager.SendMessagePlayer(ProxyServer.getInstance().getPlayer(lastDest), (ProxiedPlayer) sender, msgFull, true);
+					messageManager.sendMessagePlayer(ProxyServer.getInstance().getPlayer(lastDest), (ProxiedPlayer) sender, message);
 				}
 				else
 				{

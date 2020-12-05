@@ -1,11 +1,18 @@
 package fr.talyoki.tkchat.utils;
 
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringUtil
 {
@@ -79,7 +86,7 @@ public class StringUtil
 		return string.regionMatches(true, 0, prefix, 0, prefix.length());
 	}
 
-	//Read file content into string with - Files.readAllBytes(Path path)
+	// Read file content into string with - Files.readAllBytes(Path path)
 	public static String readFileAsString(String filePath)
 	{
 		String content = "";
@@ -96,4 +103,38 @@ public class StringUtil
 		return content;
 	}
 
+	// Convert HEX color to chat.color
+	public static String HEXtoText(String msg)
+	{
+		StringBuilder newText = new StringBuilder();
+
+		String HEXreg = "#[a-fA-F0-9]{6}";
+
+		String[] msgArray = msg.split(HEXreg);
+
+		List<String> allMatches = new ArrayList<>();
+		Matcher m = Pattern.compile(HEXreg).matcher(msg);
+		while (m.find()) {
+			allMatches.add(m.group());
+
+			
+		}
+
+		/*int strLength = msgArray.length;
+		int hexLength = allMatches.size();
+
+		for(int i=0; i<strLength || i<hexLength; i++)
+		{
+			if(i < msgArray.length)
+			{
+				newText.append(msgArray[i]);
+			}
+			if(i < allMatches.size())
+			{
+				newText.append(ChatColor.of(allMatches.get(i)));
+			}
+		}*/
+
+		return newText.toString();
+	}
 }

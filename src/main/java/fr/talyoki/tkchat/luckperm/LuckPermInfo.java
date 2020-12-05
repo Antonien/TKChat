@@ -25,6 +25,12 @@ public class LuckPermInfo
 		return user;
 	}
 
+	// Permet d'obtenir le groupe d'un joueur
+	public String getGroupName(User user)
+	{
+		return user.getPrimaryGroup();
+	}
+
 	// Permet d'obtenir le prefix d'un joueur
 	public String getPrefixGroup(User user)
 	{

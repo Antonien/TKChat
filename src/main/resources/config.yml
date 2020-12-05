@@ -22,3 +22,11 @@ welcome_msg:
   server_disconnect: "&c%player% nous abandone"
   server_switch: "&7%player% : %old_serv_prefix% %old_serv_name% ▶ %new_serv_prefix% %new_serv_name%"
   server_new: "&dDisez bonjour a %player% ! s'est un nouvo"
+group_info:
+  omega: "Grade par défaut"
+  omega+: "1er grade payant"
+  sigma: "2nd grade payant"
+  delta: "Développeur <3"
+  beta: "Modérateur"
+  beta+: "Chef modérateur"
+  alpha: "Les dieux"
