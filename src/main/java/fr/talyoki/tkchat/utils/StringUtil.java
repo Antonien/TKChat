@@ -103,9 +103,27 @@ public class StringUtil
 		return content;
 	}
 
+	// Compatibilité [color=#ffffff] by #ffffff (TabList)
+	public static String parseColorTag(String msg)
+	{
+		String HEXreg = "\\[color=#[a-fA-F0-9]{6}]";
+
+		Pattern pattern = Pattern.compile(HEXreg);
+		Matcher m = pattern.matcher(msg);
+		while (m.find()) {
+			String color = msg.substring(m.start(), m.end());
+			msg = msg.replace(color, ChatColor.of(color.substring(7, color.length()-1)) + "");
+			m = pattern.matcher(msg);
+		}
+
+		return msg;
+	}
+
 	// Convert HEX color to chat.color
 	public static String HEXtoText(String msg)
 	{
+		msg = parseColorTag(msg);
+
 		String HEXreg = "#[a-fA-F0-9]{6}";
 
 		Pattern pattern = Pattern.compile(HEXreg);
@@ -138,7 +156,23 @@ public class StringUtil
 	// Remove color bukkit
 	public static String removeBukkitColors(String msg)
 	{
-		String HEXreg = "(&|§)([0-9a-fA-F]|[k-oK-O]|[rR])";
+		String HEXreg = "(&|§)([0-9a-fA-F]|[k-oK-O]|[rR]|[xX])";
+
+		Pattern pattern = Pattern.compile(HEXreg);
+		Matcher m = pattern.matcher(msg);
+		while (m.find()) {
+			String color = msg.substring(m.start(), m.end());
+			msg = msg.replace(color, "");
+			m = pattern.matcher(msg);
+		}
+
+		return msg;
+	}
+
+	// Remove [color=#ffffff]
+	public static String removeColorTag(String msg)
+	{
+		String HEXreg = "\\[color=#[a-fA-F0-9]{6}]";
 
 		Pattern pattern = Pattern.compile(HEXreg);
 		Matcher m = pattern.matcher(msg);
@@ -154,6 +188,7 @@ public class StringUtil
 	// Remove all color
 	public static String removeAllColor(String msg)
 	{
+		msg = removeColorTag(msg);
 		msg = removeHexColors(msg);
 		msg = removeBukkitColors(msg);
 
