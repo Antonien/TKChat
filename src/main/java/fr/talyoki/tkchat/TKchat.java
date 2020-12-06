@@ -1,9 +1,6 @@
 package fr.talyoki.tkchat;
 
-import fr.talyoki.tkchat.cmd.SpyChatCmd;
-import fr.talyoki.tkchat.cmd.LiveCmd;
-import fr.talyoki.tkchat.cmd.MsgCmd;
-import fr.talyoki.tkchat.cmd.RCmd;
+import fr.talyoki.tkchat.cmd.*;
 import fr.talyoki.tkchat.listeners.*;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.utils.ConfigUtil;
