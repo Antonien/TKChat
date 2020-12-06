@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dcd0e5b0-c5e9-4333-8e76-2472244506fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/MsgCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/cmd/MsgCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/message/InfoPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/message/InfoPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/message/MsgScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/message/MsgScope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/message/PrivateMessageBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/message/PrivateMessageBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/message/TextInLive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/data/message/TextInLive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/ChatEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/listeners/ChatEventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/MessageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/manager/MessageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/utils/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/talyoki/tkchat/utils/StringUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
