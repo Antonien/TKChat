@@ -51,7 +51,12 @@ public class MsgCmd extends Command implements TabExecutor
 					message = message.substring(0, message.length() - 1);
 
 					// Envoi du message en privé
-					messageManager.SendMessagePlayer(resultPlayers.get(0), (ProxiedPlayer) commandSender, new TextComponent(message), true);
+					if(this.hasChatColorPermissions(commandSender))
+					{
+						message = StringUtil.HEXtoText(message);
+					}
+
+					messageManager.sendMessagePlayer(resultPlayers.get(0), (ProxiedPlayer) commandSender, message);
 
 					// Gestion de l'historique
 					lastPrivateMsgHist.addPlayer(commandSender.getName(), resultPlayers.get(0).getName());
@@ -76,6 +81,12 @@ public class MsgCmd extends Command implements TabExecutor
 	private boolean hasSendPrivatePermissions(CommandSender sender)
 	{
 		return sender.hasPermission("*") || sender.hasPermission(Permissions.CMD_MSG_PRIVATE.toString());
+	}
+
+	// Permissions message privé couleur
+	private boolean hasChatColorPermissions(CommandSender sender)
+	{
+		return sender.hasPermission("*") || sender.hasPermission(Permissions.FUNC_CHAT_COLOR.toString());
 	}
 
 	// auto completion

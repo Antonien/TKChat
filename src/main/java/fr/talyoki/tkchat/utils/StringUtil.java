@@ -1,11 +1,18 @@
 package fr.talyoki.tkchat.utils;
 
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringUtil
 {
@@ -79,7 +86,7 @@ public class StringUtil
 		return string.regionMatches(true, 0, prefix, 0, prefix.length());
 	}
 
-	//Read file content into string with - Files.readAllBytes(Path path)
+	// Read file content into string with - Files.readAllBytes(Path path)
 	public static String readFileAsString(String filePath)
 	{
 		String content = "";
@@ -96,4 +103,19 @@ public class StringUtil
 		return content;
 	}
 
+	// Convert HEX color to chat.color
+	public static String HEXtoText(String msg)
+	{
+		String HEXreg = "#[a-fA-F0-9]{6}";
+
+		Pattern pattern = Pattern.compile(HEXreg);
+		Matcher m = pattern.matcher(msg);
+		while (m.find()) {
+			String color = msg.substring(m.start(), m.end());
+			msg = msg.replace(color, ChatColor.of(color) + "");
+			m = pattern.matcher(msg);
+		}
+
+		return ChatColor.translateAlternateColorCodes('&', msg);
+	}
 }

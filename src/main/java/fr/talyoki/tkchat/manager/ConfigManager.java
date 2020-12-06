@@ -20,6 +20,7 @@ public class ConfigManager
 	public Map<String, String> listAliasServerPrefix = new HashMap<>();
 	public Map<String, String> listPrefix = new HashMap<>();
 	public Map<String, String> listWelcomeMessage = new HashMap<>();
+	public Map<String, String> listInfoGroup = new HashMap<>();
 
 	public ConfigManager(Plugin plugin)
 	{
@@ -93,6 +94,17 @@ public class ConfigManager
 			for(String key : listWelcomeMsg.getKeys())
 			{
 				listWelcomeMessage.put(key, listWelcomeMsg.getString(key, ""));
+			}
+
+			// Récupération des info de grade
+			if(!configuration.contains("group_info"))
+			{
+				return false;
+			}
+			Configuration listGroup = configuration.getSection("group_info");
+			for(String key : listGroup.getKeys())
+			{
+				listInfoGroup.put(key, listGroup.getString(key, ""));
 			}
 		}
 
