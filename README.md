@@ -9,6 +9,8 @@ A Bungee chat plugin.
 - Management of prefixes and suffixes from LuckPerms.
 - Management of prefixes ans aliases of bungee servers.
 - Management of welcome, login, logout et switch servers.
+- Use ! at first allow talking on the current server only
+- Can use color code like &6, #ffffff and [color=#ffffff]
 ###### Commands
 - /msg [pseudo] [message] - (tkchat.msg.private)
 - /r [message] - (tkchat.msg.r)
