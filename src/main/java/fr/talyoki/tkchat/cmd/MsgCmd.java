@@ -51,11 +51,6 @@ public class MsgCmd extends Command implements TabExecutor
 					message = message.substring(0, message.length() - 1);
 
 					// Envoi du message en privé
-					if(this.hasChatColorPermissions(commandSender))
-					{
-						message = StringUtil.HEXtoText(message);
-					}
-
 					messageManager.sendMessagePlayer(resultPlayers.get(0), (ProxiedPlayer) commandSender, message);
 
 					// Gestion de l'historique

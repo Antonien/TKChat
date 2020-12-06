@@ -118,4 +118,45 @@ public class StringUtil
 
 		return ChatColor.translateAlternateColorCodes('&', msg);
 	}
+
+	// Remove color HEX
+	public static String removeHexColors(String msg)
+	{
+		String HEXreg = "#[a-fA-F0-9]{6}";
+
+		Pattern pattern = Pattern.compile(HEXreg);
+		Matcher m = pattern.matcher(msg);
+		while (m.find()) {
+			String color = msg.substring(m.start(), m.end());
+			msg = msg.replace(color, "");
+			m = pattern.matcher(msg);
+		}
+
+		return msg;
+	}
+
+	// Remove color bukkit
+	public static String removeBukkitColors(String msg)
+	{
+		String HEXreg = "(&|§)([0-9a-fA-F]|[k-oK-O]|[rR])";
+
+		Pattern pattern = Pattern.compile(HEXreg);
+		Matcher m = pattern.matcher(msg);
+		while (m.find()) {
+			String color = msg.substring(m.start(), m.end());
+			msg = msg.replace(color, "");
+			m = pattern.matcher(msg);
+		}
+
+		return msg;
+	}
+
+	// Remove all color
+	public static String removeAllColor(String msg)
+	{
+		msg = removeHexColors(msg);
+		msg = removeBukkitColors(msg);
+
+		return msg;
+	}
 }
