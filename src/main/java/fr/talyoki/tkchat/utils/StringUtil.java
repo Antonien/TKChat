@@ -106,35 +106,16 @@ public class StringUtil
 	// Convert HEX color to chat.color
 	public static String HEXtoText(String msg)
 	{
-		StringBuilder newText = new StringBuilder();
-
 		String HEXreg = "#[a-fA-F0-9]{6}";
 
-		String[] msgArray = msg.split(HEXreg);
-
-		List<String> allMatches = new ArrayList<>();
-		Matcher m = Pattern.compile(HEXreg).matcher(msg);
+		Pattern pattern = Pattern.compile(HEXreg);
+		Matcher m = pattern.matcher(msg);
 		while (m.find()) {
-			allMatches.add(m.group());
-
-			
+			String color = msg.substring(m.start(), m.end());
+			msg = msg.replace(color, ChatColor.of(color) + "");
+			m = pattern.matcher(msg);
 		}
 
-		/*int strLength = msgArray.length;
-		int hexLength = allMatches.size();
-
-		for(int i=0; i<strLength || i<hexLength; i++)
-		{
-			if(i < msgArray.length)
-			{
-				newText.append(msgArray[i]);
-			}
-			if(i < allMatches.size())
-			{
-				newText.append(ChatColor.of(allMatches.get(i)));
-			}
-		}*/
-
-		return newText.toString();
+		return ChatColor.translateAlternateColorCodes('&', msg);
 	}
 }

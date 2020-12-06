@@ -1,4 +1,4 @@
-package fr.talyoki.tkchat.data;
+package fr.talyoki.tkchat.data.message;
 
 public enum MsgScope {
     GLOBAL("GLOBAL"),

@@ -1,14 +1,13 @@
 package fr.talyoki.tkchat.manager;
 
-import fr.talyoki.tkchat.data.InfoPlayer;
+import fr.talyoki.tkchat.data.message.InfoPlayer;
 import fr.talyoki.tkchat.data.message.MsgScope;
-import fr.talyoki.tkchat.data.TextInLive;
+import fr.talyoki.tkchat.data.message.TextInLive;
 import fr.talyoki.tkchat.data.message.PrivateMessageBuilder;
 import fr.talyoki.tkchat.luckperm.LuckPermInfo;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.*;
-import net.md_5.bungee.api.chat.hover.content.Text;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.connection.Server;
 
@@ -55,10 +54,11 @@ public class MessageManager
 				// Création du message complet
 				ComponentBuilder textGlobal = new ComponentBuilder();
 				textGlobal.append(aliasGlobal);
-				textGlobal.append(inLive.getPrefix());
-				textGlobal.append(infoPlayer.getPrefixGroup());
-				//textGlobal.append(infoPlayer.getPrefixPlayer());
-				textGlobal.append(player.getDisplayName() + ChatColor.WHITE + " : " + msg);
+				textGlobal.append(inLive.getPrefix().create(), ComponentBuilder.FormatRetention.FORMATTING);
+				textGlobal.append(infoPlayer.getPrefixGroup().create(), ComponentBuilder.FormatRetention.FORMATTING);
+				textGlobal.append(infoPlayer.getPrefixPlayer().create(), ComponentBuilder.FormatRetention.FORMATTING);
+				textGlobal.appendLegacy(player.getDisplayName() + ChatColor.WHITE + " : ");
+				textGlobal.append(TextComponent.fromLegacyText(msg));
 
 				sendMessageGlobal(textGlobal);
 				break;
@@ -66,10 +66,11 @@ public class MessageManager
 				// Création du message complet
 				ComponentBuilder textServer = new ComponentBuilder();
 				textServer.append(aliasServer);
-				textServer.append(inLive.getPrefix());
-				textServer.append(infoPlayer.getPrefixGroup());
-				textServer.append(infoPlayer.getPrefixPlayer());
-				textServer.append(player.getDisplayName() + ChatColor.WHITE + " : " + msg);
+				textServer.append(inLive.getPrefix().create(), ComponentBuilder.FormatRetention.FORMATTING);
+				textServer.append(infoPlayer.getPrefixGroup().create(), ComponentBuilder.FormatRetention.FORMATTING);
+				textServer.append(infoPlayer.getPrefixPlayer().create(), ComponentBuilder.FormatRetention.FORMATTING);
+				textServer.appendLegacy(player.getDisplayName() + ChatColor.WHITE + " : ");
+				textServer.append(TextComponent.fromLegacyText(msg));
 
 				sendMessageServer(textServer, player.getServer());
 
@@ -87,19 +88,19 @@ public class MessageManager
 	}
 
 	// Envoi du message global
-	public void sendMessageGlobal(ComponentBuilder msgFull)
+	public void sendMessageGlobal(ComponentBuilder msg)
 	{
-		ProxyServer.getInstance().broadcast(msgFull.create());
+		ProxyServer.getInstance().broadcast(msg.create());
 	}
 
 	// Envoi du message sur un serveur
-	public void sendMessageServer(ComponentBuilder msgFull, Server server)
+	public void sendMessageServer(ComponentBuilder msg, Server server)
 	{
 		server.getInfo().getPlayers().forEach((player) -> {
-			player.sendMessage(msgFull.create());
+			player.sendMessage(msg.create());
 		});
 
-		ProxyServer.getInstance().getLogger().log(Level.INFO, "[" + server.getInfo().getName() + "] <-> " + msgFull);
+		ProxyServer.getInstance().getLogger().log(Level.INFO, "[" + server.getInfo().getName() + "] <-> " + msg);
 	}
 
 	// Envoie d'un message privé

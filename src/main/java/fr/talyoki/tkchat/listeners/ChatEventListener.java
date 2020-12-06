@@ -4,6 +4,7 @@ import fr.talyoki.tkchat.data.message.MsgScope;
 import fr.talyoki.tkchat.data.Permissions;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.MessageManager;
+import fr.talyoki.tkchat.utils.StringUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -38,7 +39,7 @@ public class ChatEventListener implements Listener
 
 			if(this.hasChatColorPermissions(player))
 			{
-				msg = msg.replace('&', '§');
+				msg = StringUtil.HEXtoText(msg);
 			}
 
 			// Détection du type de message
