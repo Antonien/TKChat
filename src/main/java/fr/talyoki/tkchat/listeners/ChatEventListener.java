@@ -1,15 +1,13 @@
 package fr.talyoki.tkchat.listeners;
 
-import fr.talyoki.tkchat.data.ErrorMsg;
-import fr.talyoki.tkchat.data.message.MsgScope;
 import fr.talyoki.tkchat.data.Permissions;
+import fr.talyoki.tkchat.data.message.MsgScope;
 import fr.talyoki.tkchat.manager.ConfigManager;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.manager.MessageManager;
 import fr.talyoki.tkchat.utils.StringUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.ChatEvent;
@@ -17,17 +15,13 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 import net.md_5.bungee.event.EventPriority;
 
-import java.util.logging.Level;
-
 public class ChatEventListener implements Listener
 {
 	private MessageManager messageManager;
-	private ConfigManager configManager;
 
 	public ChatEventListener(Manager manager)
 	{
 		this.messageManager = manager.messageManager;
-		this.configManager = manager.configManager;
 	}
 
 	// Si un joueur envoie un message ...
@@ -84,25 +78,6 @@ public class ChatEventListener implements Listener
 				player.sendMessage(new TextComponent(ChatColor.RED + "Vous n'avez pas la permission de parler en global"));
 			}
 		}
-		else
-		{
-			if(e.getMessage().startsWith("/greload"))
-			{
-				if(hasBungeeReloadPermission(player))
-				{
-					configManager.loadConfig();
-					ProxyServer.getInstance().getLogger().log(Level.INFO, "[TKchat] Fichier de configuration rechargé");
-					if(e.getSender() instanceof ProxiedPlayer)
-					{
-						player.sendMessage(new TextComponent(ChatColor.GOLD + "[TKchat] Fichier de configuration rechargé"));
-					}
-				}
-				else
-				{
-					player.sendMessage(new TextComponent(ErrorMsg.ERROR_PERM.toString()));
-				}
-			}
-		}
 	}
 
 	// Permission message global
@@ -121,11 +96,5 @@ public class ChatEventListener implements Listener
 	private boolean hasChatColorPermissions(CommandSender sender)
 	{
 		return sender.hasPermission(Permissions.FUNC_CHAT_COLOR.toString());
-	}
-
-	// Permission reload
-	public boolean hasBungeeReloadPermission(CommandSender sender)
-	{
-		return sender.hasPermission("*") || sender.hasPermission("bungeecord.command.reload");
 	}
 }

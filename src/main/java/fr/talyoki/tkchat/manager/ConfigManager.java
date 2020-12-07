@@ -7,7 +7,6 @@ import net.md_5.bungee.config.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,11 +15,11 @@ public class ConfigManager
 	private Configuration configuration = null;
 	private Plugin plugin = null;
 
-	public Map<String, String> listAliasGlobalPrefix = new HashMap<>();
-	public Map<String, String> listAliasServerPrefix = new HashMap<>();
-	public Map<String, String> listPrefix = new HashMap<>();
-	public Map<String, String> listWelcomeMessage = new HashMap<>();
-	public Map<String, String> listInfoGroup = new HashMap<>();
+	public Map<String, String> listAliasGlobalPrefix = null;
+	public Map<String, String> listAliasServerPrefix = null;
+	public Map<String, String> listPrefix = null;
+	public Map<String, String> listWelcomeMessage = null;
+	public Map<String, String> listInfoGroup = null;
 
 	public ConfigManager(Plugin plugin)
 	{
@@ -29,6 +28,12 @@ public class ConfigManager
 
 	public boolean loadConfig()
 	{
+		listAliasGlobalPrefix = new HashMap<>();
+		listAliasServerPrefix = new HashMap<>();
+		listPrefix = new HashMap<>();
+		listWelcomeMessage = new HashMap<>();
+		listInfoGroup = new HashMap<>();
+
 		// Initialisation du fichier de config
 		try
 		{

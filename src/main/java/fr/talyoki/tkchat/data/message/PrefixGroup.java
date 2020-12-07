@@ -25,7 +25,7 @@ public class PrefixGroup
 		prefixGroupStr = StringUtil.removeAllColor(luckpermGroup);
 
 		// Récupération du texte des config
-		String textInfo = StringUtil.HEXtoText(configManager.listInfoGroup.get(luckPerms.getGroupName(user)));
+		String textInfo = configManager.listInfoGroup.getOrDefault(luckPerms.getGroupName(user), "");
 
 		// Récupération du prefix du joueur
 		prefixGroup.event(new HoverEvent(net.md_5.bungee.api.chat.HoverEvent.Action.SHOW_TEXT, new ComponentBuilder().appendLegacy(textInfo).create()));
