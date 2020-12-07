@@ -4,7 +4,7 @@ public enum Permissions
 {
 	CMD_LIVE("live"),
 	FUNC_MSG_GLOBAL("msg.global"),
-	FUNC_MSG_SERVER("msg.serveur"),
+	FUNC_MSG_SERVER("msg.server"),
 	CMD_MSG_PRIVATE("msg.private"),
 	CMD_MSG_R("msg.r"),
 	CMD_SPYCHAT_GLOBAL("spychat.global"),
