@@ -10,6 +10,7 @@ public enum Permissions
 	CMD_SPYCHAT_GLOBAL("spychat.global"),
 	CMD_SPYCHAT_PRIVATE("spychat.private"),
 	CMD_SPYCHAT_LIST("spychat.list"),
+	CMD_TKCHAT_RELOADCONFIG("reload.config"),
 	FUNC_AUTO_ADD_MODO_LIST("chat.modo"),
 	FUNC_CHAT_COLOR("chat.color");
 

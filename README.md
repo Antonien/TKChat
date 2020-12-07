@@ -19,6 +19,7 @@ A Bungee chat plugin.
 - /spychat list global/private - (tkchat.spychat.list)
 - /live up [pseudoMC] [pseudoTwitch] - (tkchat.live)
 - /live down [pseudoMC] - (tkchat.live)
+- /tkchat reloadconfig - (tkchat.reload.config)
 ###### Other nodes
 - tkchat.msg.global : Chat cross server
 - tkchat.msg.server : Chat only to the server where you are

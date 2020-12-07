@@ -35,6 +35,7 @@ public class TKchat extends Plugin
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new LoginEventListener(manager));
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new DisconnectEventListener(manager));
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new SwitchServerEventListener(manager));
+		ProxyServer.getInstance().getPluginManager().registerListener(this, new ReloadEventListener(manager));
 
 		GroupeChangeEventListener groupeChangeEventListener = new GroupeChangeEventListener(manager);
 		manager.luckPerms.getAPI().getEventBus().subscribe(UserDataRecalculateEvent.class, groupeChangeEventListener::onUserTrack);
@@ -44,6 +45,7 @@ public class TKchat extends Plugin
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new MsgCmd(manager));
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new SpyChatCmd(manager));
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new RCmd(manager));
+		ProxyServer.getInstance().getPluginManager().registerCommand(this, new TkchatCmd(manager));
 	}
 
 	public void onDisable()

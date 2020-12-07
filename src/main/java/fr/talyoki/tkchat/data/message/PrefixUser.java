@@ -24,9 +24,6 @@ public class PrefixUser
 		// Génération du groupe sans couleurs
 		prefixUserStr = StringUtil.removeAllColor(luckpermPrefixUser);
 
-		// Récupération du texte des config
-		String textInfo = StringUtil.HEXtoText(configManager.listInfoGroup.get(luckPerms.getGroupName(user)));
-
 		// Récupération du prefix du joueur
 		prefixUser.appendLegacy(StringUtil.HEXtoText(luckpermPrefixUser));
 	}
