@@ -12,6 +12,7 @@ public class Manager
 	public ModeratorsPrivateViewManager moderatorsPrivateViewManager = null;
 	public MessageManager messageManager = null;
 	public ConfigManager configManager = null;
+	public PlayerManager playerManager = null;
 
 	// Initialisation des configs
 	public Manager(Plugin plugin)
@@ -27,6 +28,7 @@ public class Manager
 		lastPrivateMsgHist = new LastPrivateMessageHistoryManager();
 		moderatorsGlobalViewManager = new ModeratorsGlobalViewManager();
 		moderatorsPrivateViewManager = new ModeratorsPrivateViewManager();
+		playerManager = new PlayerManager(luckPerms);
 		messageManager = new MessageManager(this);
 	}
 }

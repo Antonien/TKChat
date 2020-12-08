@@ -4,7 +4,9 @@ import fr.talyoki.tkchat.cmd.*;
 import fr.talyoki.tkchat.listeners.*;
 import fr.talyoki.tkchat.manager.Manager;
 import fr.talyoki.tkchat.utils.ConfigUtil;
+import net.luckperms.api.event.track.mutate.TrackMutateEvent;
 import net.luckperms.api.event.user.UserDataRecalculateEvent;
+import net.luckperms.api.event.user.track.UserTrackEvent;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -37,8 +39,8 @@ public class TKchat extends Plugin
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new SwitchServerEventListener(manager));
 		ProxyServer.getInstance().getPluginManager().registerListener(this, new ReloadEventListener(manager));
 
-		GroupeChangeEventListener groupeChangeEventListener = new GroupeChangeEventListener(manager);
-		manager.luckPerms.getAPI().getEventBus().subscribe(UserDataRecalculateEvent.class, groupeChangeEventListener::onUserTrack);
+		NodeChangeEventListener nodeChangeEventListener = new NodeChangeEventListener(manager);
+		manager.luckPerms.getAPI().getEventBus().subscribe(UserDataRecalculateEvent.class, nodeChangeEventListener::onUserTrack);
 
 		// Commandes
 		ProxyServer.getInstance().getPluginManager().registerCommand(this, new LiveCmd(manager));

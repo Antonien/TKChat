@@ -1,9 +1,7 @@
 package fr.talyoki.tkchat.listeners;
 
-import fr.talyoki.tkchat.manager.ConfigManager;
-import fr.talyoki.tkchat.manager.Manager;
-import fr.talyoki.tkchat.manager.ModeratorsGlobalViewManager;
-import fr.talyoki.tkchat.manager.ModeratorsPrivateViewManager;
+import fr.talyoki.tkchat.data.PlayerData;
+import fr.talyoki.tkchat.manager.*;
 import fr.talyoki.tkchat.utils.StringUtil;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -21,7 +19,8 @@ public class LoginEventListener implements Listener
 {
 	private ModeratorsGlobalViewManager moderatorsGlobalView;
 	private ModeratorsPrivateViewManager moderatorsPrivateView;
-	private ConfigManager configManager;
+	private PlayerManager playerManager;
+
 	private static Set<String> newTempPlayers = new HashSet<String>();
 
 	// Récupération des variables
@@ -29,7 +28,7 @@ public class LoginEventListener implements Listener
 	{
 		moderatorsGlobalView = manager.moderatorsGlobalViewManager;
 		moderatorsPrivateView = manager.moderatorsPrivateViewManager;
-		configManager = manager.configManager;
+		playerManager = manager.playerManager;
 	}
 
 	// Lorsqu'un joueur se connecte ...
@@ -39,18 +38,21 @@ public class LoginEventListener implements Listener
 		// Récupération du joueur
 		ProxiedPlayer player = e.getPlayer();
 
+		// Récupération des données du joueur
+		playerManager.addPlayer(player);
+
 		String locations = StringUtil.readFileAsString(ProxyServer.getInstance().getPluginsFolder() + "/../locations.yml");
 		if(locations.contains("'" + player.getName() + ";") || newTempPlayers.contains(player.getName()))
 		{
 			// Message lorsqu'un joueur se connecte
-			String msg = configManager.listWelcomeMessage.get("server_connect").replace("%player%", player.getDisplayName());
+			String msg = ConfigManager.listWelcomeMessage.get("server_connect").replace("%player%", player.getDisplayName());
 			ProxyServer.getInstance().broadcast(new TextComponent(msg.replace('&', '§')));
 		}
 		else
 		{
 			// Message lorsqu'un joueur se connecte ET il est nouveau
 			newTempPlayers.add(player.getName());
-			String msg = configManager.listWelcomeMessage.get("server_new").replace("%player%", player.getDisplayName());
+			String msg = ConfigManager.listWelcomeMessage.get("server_new").replace("%player%", player.getDisplayName());
 			ProxyServer.getInstance().broadcast(new TextComponent(msg.replace('&', '§')));
 		}
 
