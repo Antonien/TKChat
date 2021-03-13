@@ -15,11 +15,11 @@ public class ConfigManager
 	private Configuration configuration = null;
 	private Plugin plugin = null;
 
-	public Map<String, String> listAliasGlobalPrefix = null;
-	public Map<String, String> listAliasServerPrefix = null;
-	public Map<String, String> listPrefix = null;
-	public Map<String, String> listWelcomeMessage = null;
-	public Map<String, String> listInfoGroup = null;
+	public static Map<String, String> listAliasGlobalPrefix = null;
+	public static Map<String, String> listAliasServerPrefix = null;
+	public static Map<String, String> listPrefix = null;
+	public static Map<String, String> listWelcomeMessage = null;
+	public static Map<String, String> listInfoGroup = null;
 
 	public ConfigManager(Plugin plugin)
 	{

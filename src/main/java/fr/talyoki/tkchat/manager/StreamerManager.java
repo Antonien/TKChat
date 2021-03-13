@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public class StreamerManager
 {
-	private Map<String, String> StreamerList = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);;
+	private Map<String, String> StreamerList = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
 	public StreamerManager()
 	{

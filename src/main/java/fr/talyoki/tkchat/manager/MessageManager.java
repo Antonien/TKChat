@@ -1,6 +1,7 @@
 package fr.talyoki.tkchat.manager;
 
 import fr.talyoki.tkchat.data.Permissions;
+import fr.talyoki.tkchat.data.PlayerData;
 import fr.talyoki.tkchat.data.message.*;
 import fr.talyoki.tkchat.luckperm.LuckPermInfo;
 import fr.talyoki.tkchat.utils.StringUtil;
@@ -16,37 +17,36 @@ import java.util.logging.Level;
 
 public class MessageManager
 {
-	private LuckPermInfo luckPerms;
-	private StreamerManager streamerManager;
-	private ModeratorsGlobalViewManager moderatorsGlobalView;
-	private ModeratorsPrivateViewManager moderatorsPrivateView;
-	private ConfigManager configManager;
+	private StreamerManager streamerManager = null;
+	private ModeratorsGlobalViewManager moderatorsGlobalView = null;
+	private ModeratorsPrivateViewManager moderatorsPrivateView = null;
+	private PlayerManager playerManager = null;
 
 	public MessageManager(Manager manager)
 	{
-		this.luckPerms = manager.luckPerms;
 		this.streamerManager = manager.streamerManager;
 		this.moderatorsGlobalView = manager.moderatorsGlobalViewManager;
 		this.moderatorsPrivateView = manager.moderatorsPrivateViewManager;
-		this.configManager = manager.configManager;
+		this.playerManager = manager.playerManager;
 	}
 
 	// Modèle de message standard
 	public void sendMessage(ProxiedPlayer player, String msg, MsgScope scope)
 	{
 		// Récupération des infos du joueur
-		PrefixGroup prefixGroup = new PrefixGroup(luckPerms, configManager, player);
-		PrefixUser prefixUser = new PrefixUser(luckPerms, configManager, player);
+		PlayerData playerData = playerManager.getPlayerData(player.getName());
+		PrefixGroup prefixGroup = playerData.getPrefixGroup();
+		PrefixUser prefixUser = playerData.getPrefixUser();
 
 		// Récupération du serveur d'origine du message
 		String server = player.getServer().getInfo().getName();
 
 		// Création de l'icon pour situer le joueur entre les serveurs
-		String aliasGlobal = StringUtil.HEXtoText(configManager.listAliasGlobalPrefix.getOrDefault(server, configManager.listAliasGlobalPrefix.get("default")));
-		String aliasServer = StringUtil.HEXtoText(configManager.listAliasServerPrefix.getOrDefault(server, configManager.listAliasServerPrefix.get("default")));
+		String aliasGlobal = StringUtil.HEXtoText(ConfigManager.listAliasGlobalPrefix.getOrDefault(server, ConfigManager.listAliasGlobalPrefix.get("default")));
+		String aliasServer = StringUtil.HEXtoText(ConfigManager.listAliasServerPrefix.getOrDefault(server, ConfigManager.listAliasServerPrefix.get("default")));
 
 		// Création du prefix live clickable
-		TextInLive inLive = new TextInLive(configManager, streamerManager, player);
+		TextInLive inLive = new TextInLive(streamerManager, player);
 
 		// Envoi du message
 		switch(scope)

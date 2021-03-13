@@ -14,7 +14,7 @@ public class TextInLive
 	private ComponentBuilder inLive = new ComponentBuilder("");
 	private String inLiveStr = "";
 
-	public TextInLive(ConfigManager configManager, StreamerManager streamerManager, ProxiedPlayer player)
+	public TextInLive(StreamerManager streamerManager, ProxiedPlayer player)
 	{
 		if(streamerManager.isInLive(player))
 		{
@@ -22,7 +22,7 @@ public class TextInLive
 			String psTwitch = streamerManager.getPseudoTwitch(player.getName());
 
 			// Récupération du préfix de la config
-			String prefixLive = configManager.listPrefix.getOrDefault("live", "");
+			String prefixLive = ConfigManager.listPrefix.getOrDefault("live", "");
 
 			// Génération du component sans couleurs
 			inLiveStr = StringUtil.removeAllColor(prefixLive);

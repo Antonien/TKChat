@@ -13,13 +13,13 @@ public class PrefixUser
 	private ComponentBuilder prefixUser = new ComponentBuilder();
 	private String prefixUserStr = null;
 
-	public PrefixUser(LuckPermInfo luckPerms, ConfigManager configManager, ProxiedPlayer player)
+	public PrefixUser(String luckpermPrefixUser)
 	{
 		// Déclaration du joueur version API Luckperms
-		User user = luckPerms.setUserLpByUUID(player.getUniqueId());
+		//User user = luckPerms.setUserLpByUUID(player.getUniqueId());
 
 		// Récupération du groupe du joueur
-		String luckpermPrefixUser = luckPerms.getPrefixUser(user);
+		//String luckpermPrefixUser = luckPerms.getPrefixUser(user);
 
 		// Génération du groupe sans couleurs
 		prefixUserStr = StringUtil.removeAllColor(luckpermPrefixUser);
