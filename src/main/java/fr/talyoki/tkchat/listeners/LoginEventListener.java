@@ -1,6 +1,5 @@
 package fr.talyoki.tkchat.listeners;
 
-import fr.talyoki.tkchat.data.PlayerData;
 import fr.talyoki.tkchat.manager.*;
 import fr.talyoki.tkchat.utils.StringUtil;
 import net.md_5.bungee.api.ProxyServer;
